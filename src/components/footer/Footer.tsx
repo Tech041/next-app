@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import React from "react";
 import Icons from "../icons/Icons";
 import Image from "next/image";
@@ -13,6 +15,28 @@ const links = [
 ];
 const style = "text-white text-xs py-1 ";
 const Footer = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [errorNameMessage, setErrorNameMessage] = useState("");
+  const [errorEmailMessage, setErrorEmailMessage] = useState("");
+  const handleSubmit = () => {
+    if (name == "") {
+      setErrorNameMessage("Name input is empty");
+    } else {
+      setErrorNameMessage("");
+    }
+    if (email == "") {
+      setErrorEmailMessage("Email input is empty");
+    } else {
+      setErrorEmailMessage("");
+    }
+    if (name && email) {
+      alert(`Dear ${name}, your subcription is successful !!`);
+      setName("");
+      setEmail("");
+    }
+  };
+
   return (
     <footer className="bg-black h-full  mt-[80px]">
       <div className="container flex flex-col md:flex-row gap-6">
@@ -90,21 +114,32 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="py-2  w-[100%] md:w-auto mb-3"
+                className="py-2  w-[100%] md:w-auto mb-1"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
+              <br />
+              <p className="text-red-600">{errorNameMessage}</p>
             </div>
+
             <div className="second-input w-[100%] md:w-auto">
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="example@email.com"
-                className="py-2  w-[100%] md:w-auto"
+                className="py-2  w-[100%] md:w-auto mb-1"
+                value={email}
               />
+              <br />
+              <p className="text-red-600">{errorEmailMessage}</p>
             </div>
           </div>
           <div>
             <button
+              onClick={handleSubmit}
               type="submit"
-              className="text-white bg-red-900 py-3 px-3 my-3 text-xs w-[100%]  "
+              className="text-white bg-red-900
+                hover:bg-red-500 py-3 px-3 my-3 text-xs w-[100%]  "
             >
               SUBSCRIBE
             </button>
