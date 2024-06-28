@@ -8,11 +8,31 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      container: {
+        center: true,
+        padding: "20px",
       },
+      colors: {
+        main: "#F60C01",
+        footertext: "#C6C6C6",
+        icons: "3D3D3D",
+      },
+      backgroundImage: {
+        gmy1: "url(/images/gym1.jpg)",
+        gym2: "url(/images/gym2.jpg)",
+        gym3: "url(/images/gym3.jpg)",
+        gym4: "url(/images/gym4.jpg)",
+        gym5: "url(/images/gym5.jpg)",
+        hero: "url(/images/hero.webp)",
+        "my-hero": "url(/images/my-hero.jpg)",
+        nel: "url(/images/nel.png)",
+      },
+    },
+    screens: {
+      sm: "576px",
+      md: "768px",
+      lg: "992px",
+      xl: "1200px",
     },
   },
   plugins: [],
